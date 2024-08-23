@@ -1,4 +1,4 @@
-import {Controller, Get, Req,HttpCode,HttpStatus,Res,Header,Redirect,Param, Query} from "@nestjs/common"
+import {Controller, Get, Req,HttpCode,HttpStatus,Res,Header,Redirect,Param, Query, Post, Body} from "@nestjs/common"
 import {Request,Response} from "express";
 
 interface videoParams{
@@ -56,5 +56,13 @@ export class UserController{
         console.log(query.age,query.name)
         return "success"
     }
+
+    //data from req.body
+    @Post("/video")
+    addVideo(@Body() requestData:Record<string,any>){
+        console.log(requestData)
+        return {success:"true"}
+    }
+
 
 }
