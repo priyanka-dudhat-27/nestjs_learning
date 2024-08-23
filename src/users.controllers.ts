@@ -1,5 +1,15 @@
-import {Controller, Get, Req,HttpCode,HttpStatus,Res,Header,Redirect} from "@nestjs/common"
+import {Controller, Get, Req,HttpCode,HttpStatus,Res,Header,Redirect,Param, Query} from "@nestjs/common"
 import {Request,Response} from "express";
+
+interface videoParams{
+    id:number,
+    name:string,
+}
+
+interface QueryParams{
+    age:number,
+    name:string
+}
 
 @Controller("/users")
 export class UserController{
@@ -32,4 +42,19 @@ export class UserController{
     redirectWallet(){
         return "Working Wallet"
     }
+
+    // params
+    @Get("/videos/:id/:name")
+    getVideos(@Param("name") param:videoParams){
+        console.log(param)
+        return 'success';
+    }
+
+    // query params
+    @Get("/search")
+    searchVideos(@Query() query:QueryParams){
+        console.log(query.age,query.name)
+        return "success"
+    }
+
 }
