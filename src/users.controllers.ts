@@ -1,6 +1,9 @@
 // import {Controller, Get, Req,HttpCode,HttpStatus,Res,Header,Redirect,Param, Query, Post, Body} from "@nestjs/common"
 // import {Request,Response} from "express";
 
+import { Controller, Inject } from "@nestjs/common";
+// import { UserStore } from "./user.store";
+
 // interface videoParams{
 //     id:number,
 //     name:string,
@@ -66,3 +69,12 @@
 
 
 // }
+
+//dependency injection topic
+
+@Controller("/users")
+export class UserController{
+    constructor(@Inject("MAIL") private emails:string[] ){
+        console.log(this.emails)
+    }
+}
