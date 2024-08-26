@@ -1,6 +1,6 @@
 import {Controller,Post,Get,Put,Delete,Param,Body} from "@nestjs/common"
-import { createUserDTO } from "./dto";
-
+import { createUserDTO } from "src/users/dto";
+ 
 let USERS=[];
 
 @Controller("/users")
